@@ -12,5 +12,6 @@ namespace CTS_Analytics.Models.StaticReports
         Month = 3,
         Quater = 4,
         Year = 5
+
     }
 }

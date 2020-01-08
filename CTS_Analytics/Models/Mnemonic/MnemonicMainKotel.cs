@@ -22,6 +22,7 @@ namespace CTS_Analytics.Models.Mnemonic
             get
             {
                 return (decimal)
+
                             (shah.ConsumptionNorm
                             + tent.ConsumptionNorm
                             + len.ConsumptionNorm

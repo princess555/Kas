@@ -6,10 +6,11 @@ using System.Web;
 
 namespace CTS_Manual_Input.Models
 {
-  public class HomePageModel
-  {
-    public List<Location> Locations { get; set; }
-    public bool CanEdit { get; set; }
-    public bool CanDelete { get; set; }
-  }
+    public class HomePageModel
+    {
+        public List<Location> Locations { get; set; }
+        public bool CanEdit { get; set; }
+        public bool CanDelete { get; set; }
+
+    }
 }

@@ -21,8 +21,9 @@ namespace CTS_Manual_Input.Models.SkipModels
 			}
 			catch
 			{
-				//Directoty doen't exist :'(
+				
 			}
+
 		}
 	}
 }

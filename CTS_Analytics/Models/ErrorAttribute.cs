@@ -15,6 +15,7 @@ namespace CTS_Analytics.Models
 			{
 				ViewName = "~/Views/Error/Exception.cshtml",
 				ViewData = new ViewDataDictionary(model)
+
 			};
 		}
 	}

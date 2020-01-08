@@ -13,6 +13,7 @@ namespace CTS_Manual_Input.Helpers
 {
 	public static class Approver
 	{
+
 		public static TransfersToApprove<TTransfer> GetTransfersToApprove<TTransfer, TEquip>(CtsDbContext cdb, IIdentity user)
 												where TTransfer : class, ITransfer
 												where TEquip : class, IEquip

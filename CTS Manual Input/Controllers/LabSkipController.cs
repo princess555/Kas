@@ -41,6 +41,7 @@ namespace CTS_Manual_Input.Controllers
 			var transfers = _cdb.SkipTransfers.Where(t => skipsArray.Contains((int)t.EquipID))
 				.Where(v => v.IsValid).Where(d => d.TransferTimeStamp >= DbFunctions.AddDays(System.DateTime.Now, -2));
 
+
 			@ViewBag.Title = "Анализы для скиповых подъемов";
 
 			return View(new SkipTransfersView

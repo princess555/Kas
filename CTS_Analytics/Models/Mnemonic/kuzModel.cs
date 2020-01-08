@@ -22,6 +22,7 @@ namespace CTS_Analytics.Models.Mnemonic
             Kotel = new Mine_Kotel(locationID);
             Sklad = new Mine_sklad(locationID);
             Raspozn = new RaspoznModel();
+
         }
 		
 		public Mine_skip SkipPos1 { get; set; }

@@ -14,8 +14,8 @@ using CTS_Analytics.Services;
 
 namespace CTS_Analytics.Controllers
 {
-	[CtsAuthorize(Roles = Roles.AnalyticsRoleName)]
-	public partial class MnemonicController : CtsAnalController
+    [CtsAuthorize(Roles = Roles.AnalyticsRoleName)]
+    public partial class MnemonicController : CtsAnalController
     {
         class SkipIndexData
         {
@@ -44,7 +44,7 @@ namespace CTS_Analytics.Controllers
 
         public ActionResult Index()
         {
-			var model = GetMnemoticMainModel();
+            var model = GetMnemoticMainModel();
             return View(model);
         }
 
@@ -76,7 +76,7 @@ namespace CTS_Analytics.Controllers
                 var locationName = GetLocationNameOnCurrentLanguate(location);
                 model.AlarmDict.Add(locationName, alarmsStatistics);
             });
-            
+
             return View(model);
         }
 
@@ -101,15 +101,15 @@ namespace CTS_Analytics.Controllers
                     "<div class='title'>" +
                     "</div>" +
                     "<div class='line'>" +
-                      "<span class='name'>"+ Resources.ResourceMnemonic.WeightConclusionIn1Train+"</span>" +
-                      "<div class='count'>"+ (int?)trainWeight + "</div>" +
-                      "<span class='caption'>"+Resources.ResourceMnemonic.Tonns+"</span>" +
+                      "<span class='name'>" + Resources.ResourceMnemonic.WeightConclusionIn1Train + "</span>" +
+                      "<div class='count'>" + (int?)trainWeight + "</div>" +
+                      "<span class='caption'>" + Resources.ResourceMnemonic.Tonns + "</span>" +
                       "<div class='clearfix'></div>" +
                     "</div>" +
                     "<div class='line'>" +
-                        "<span class='name'>"+Resources.ResourceMnemonic.WeightConclusionWeightPerPeriod+"</span>" +
-                        "<div class='count'>"+ (int?)periodWeight + "</div>" +
-                        "<span class='caption'>"+Resources.ResourceMnemonic.Tonns+"</span>" +
+                        "<span class='name'>" + Resources.ResourceMnemonic.WeightConclusionWeightPerPeriod + "</span>" +
+                        "<div class='count'>" + (int?)periodWeight + "</div>" +
+                        "<span class='caption'>" + Resources.ResourceMnemonic.Tonns + "</span>" +
                         "<div class='clearfix'></div>" +
                     "</div>" +
                 "</div>";
@@ -132,105 +132,105 @@ namespace CTS_Analytics.Controllers
                 var prodFactDataTask = Task.Run(() =>
                 {
                     var cdb = new CtsDbContext();
-                    
-                        var prodFactData = cdb.SkipTransfers.Where(d => d.TransferTimeStamp >= fromDate && d.TransferTimeStamp <= toDate).Where(v => v.IsValid == true).Select(s => new SkipIndexData()
-                        {
-                            LocationID = s.Equip.Location.ID,
-                            ProdData = s.SkipWeight,
-                            LiftingID = s.LiftingID
-                        }).ToArray();
-                        model.Kuz.ProdFact = GetProductionData("kuz", prodFactData);
-                        model.Kost.ProdFact = GetProductionData("kost", prodFactData);
-                        model.Abay.ProdFact = GetProductionData("abay", prodFactData);
-                        model.Len.ProdFact = GetProductionData("len", prodFactData);
-                        model.Sar1.ProdFact = GetProductionData("sar1", prodFactData);
-                        model.Sar3.ProdFact = GetProductionData("sar3", prodFactData);
-                        model.Kaz.ProdFact = GetProductionData("kaz", prodFactData);
-                        model.Shah.ProdFact = GetProductionData("shah", prodFactData);
-                        model.Tent.ProdFact = (int)Builder.GetBeltScaleModel(21).ProductionPerTimeInterval;
-                        model.Tent.ProdFact = (int)Builder.GetBeltScaleModel(25).ProductionPerTimeInterval;
+
+                    var prodFactData = cdb.SkipTransfers.Where(d => d.TransferTimeStamp >= fromDate && d.TransferTimeStamp <= toDate).Where(v => v.IsValid == true).Select(s => new SkipIndexData()
+                    {
+                        LocationID = s.Equip.Location.ID,
+                        ProdData = s.SkipWeight,
+                        LiftingID = s.LiftingID
+                    }).ToArray();
+                    model.Kuz.ProdFact = GetProductionData("kuz", prodFactData);
+                    model.Kost.ProdFact = GetProductionData("kost", prodFactData);
+                    model.Abay.ProdFact = GetProductionData("abay", prodFactData);
+                    model.Len.ProdFact = GetProductionData("len", prodFactData);
+                    model.Sar1.ProdFact = GetProductionData("sar1", prodFactData);
+                    model.Sar3.ProdFact = GetProductionData("sar3", prodFactData);
+                    model.Kaz.ProdFact = GetProductionData("kaz", prodFactData);
+                    model.Shah.ProdFact = GetProductionData("shah", prodFactData);
+                    model.Tent.ProdFact = (int)Builder.GetBeltScaleModel(21).ProductionPerTimeInterval;
+                    model.Tent.ProdFact = (int)Builder.GetBeltScaleModel(25).ProductionPerTimeInterval;
                 });
                 var planDataTask = Task.Run(() =>
                 {
-                        var service = new CentralDBService();
-                        model.Kuz.ProdPlan = service.GetPlanData("kuz", fromDate, toDate);
-                        model.Kost.ProdPlan = service.GetPlanData("kost",  fromDate, toDate);
-                        model.Abay.ProdPlan = service.GetPlanData("abay",  fromDate, toDate);
-                        model.Len.ProdPlan = service.GetPlanData("len",  fromDate, toDate);
-                        model.Sar1.ProdPlan = service.GetPlanData("sar1", fromDate, toDate);
-                        model.Sar3.ProdPlan = service.GetPlanData("sar3", fromDate, toDate);
-                        model.Kaz.ProdPlan = service.GetPlanData("kaz",  fromDate, toDate);
-                        model.Shah.ProdPlan = service.GetPlanData("shah",  fromDate, toDate);
-                        model.Tent.ProdPlan = service.GetPlanData("tent",  fromDate, toDate);
+                    var service = new CentralDBService();
+                    model.Kuz.ProdPlan = service.GetPlanData("kuz", fromDate, toDate);
+                    model.Kost.ProdPlan = service.GetPlanData("kost", fromDate, toDate);
+                    model.Abay.ProdPlan = service.GetPlanData("abay", fromDate, toDate);
+                    model.Len.ProdPlan = service.GetPlanData("len", fromDate, toDate);
+                    model.Sar1.ProdPlan = service.GetPlanData("sar1", fromDate, toDate);
+                    model.Sar3.ProdPlan = service.GetPlanData("sar3", fromDate, toDate);
+                    model.Kaz.ProdPlan = service.GetPlanData("kaz", fromDate, toDate);
+                    model.Shah.ProdPlan = service.GetPlanData("shah", fromDate, toDate);
+                    model.Tent.ProdPlan = service.GetPlanData("tent", fromDate, toDate);
                 });
                 var shippedDataTask = Task.Run(() =>
                 {
                     var cdb = new CtsDbContext();
-                    
-                        var shippedData = cdb.WagonTransfers.Where(d => d.TransferTimeStamp >= fromDate && d.TransferTimeStamp <= toDate).Where(v => v.IsValid == true).Select(s=> new WagonIndexData()
-                        {
-                            LocationID = s.Equip.LocationID,
-                            Direction = s.Direction,
-                            Brutto = s.Brutto,
-                            ToDest = s.ToDest
-                        }).ToArray();
-                        model.Kuz.Shipped = GetShippedData("kuz", shippedData);
-                        model.Kost.Shipped = GetShippedData("kost", shippedData);
-                        model.Abay.Shipped = GetShippedData("abay", shippedData);
-                        model.Len.Shipped = GetShippedData("len", shippedData);
-                        model.Sar1.Shipped = GetShippedData("sar1", shippedData);
-                        model.Sar3.Shipped = GetShippedData("sar3", shippedData);
-                        model.Kaz.Shipped = GetShippedData("kaz", shippedData);
-                        model.Shah.Shipped = GetShippedData("shah", shippedData);
-                        model.Tent.Shipped = GetShippedData("tent", shippedData);
 
-						model.COF.Shipped = GetShippedData("cofv", shippedData);
+                    var shippedData = cdb.WagonTransfers.Where(d => d.TransferTimeStamp >= fromDate && d.TransferTimeStamp <= toDate).Where(v => v.IsValid == true).Select(s => new WagonIndexData()
+                    {
+                        LocationID = s.Equip.LocationID,
+                        Direction = s.Direction,
+                        Brutto = s.Brutto,
+                        ToDest = s.ToDest
+                    }).ToArray();
+                    model.Kuz.Shipped = GetShippedData("kuz", shippedData);
+                    model.Kost.Shipped = GetShippedData("kost", shippedData);
+                    model.Abay.Shipped = GetShippedData("abay", shippedData);
+                    model.Len.Shipped = GetShippedData("len", shippedData);
+                    model.Sar1.Shipped = GetShippedData("sar1", shippedData);
+                    model.Sar3.Shipped = GetShippedData("sar3", shippedData);
+                    model.Kaz.Shipped = GetShippedData("kaz", shippedData);
+                    model.Shah.Shipped = GetShippedData("shah", shippedData);
+                    model.Tent.Shipped = GetShippedData("tent", shippedData);
 
-						model.StAbay.Outcome = GetShippedData("sabay", shippedData);
-                        model.StDubov.Outcome = GetShippedData("sdub", shippedData);
-                        model.StRaspor.Outcome = GetShippedData("srasp", shippedData);
-                        model.StUgler.Outcome = GetShippedData("sugl", shippedData);
+                    model.COF.Shipped = GetShippedData("cofv", shippedData);
 
-                        model.StAbay.Income = GetStationIncome(shippedData, cdb.Locations.Find("sabay").LocationName);
-                        model.StDubov.Income = GetStationIncome(shippedData, cdb.Locations.Find("sdub").LocationName);
-                        model.StRaspor.Income = GetStationIncome(shippedData, cdb.Locations.Find("srasp").LocationName);
-                        model.StUgler.Income = GetStationIncome(shippedData, cdb.Locations.Find("sugl").LocationName);
-                    
+                    model.StAbay.Outcome = GetShippedData("sabay", shippedData);
+                    model.StDubov.Outcome = GetShippedData("sdub", shippedData);
+                    model.StRaspor.Outcome = GetShippedData("srasp", shippedData);
+                    model.StUgler.Outcome = GetShippedData("sugl", shippedData);
+
+                    model.StAbay.Income = GetStationIncome(shippedData, cdb.Locations.Find("sabay").LocationName);
+                    model.StDubov.Income = GetStationIncome(shippedData, cdb.Locations.Find("sdub").LocationName);
+                    model.StRaspor.Income = GetStationIncome(shippedData, cdb.Locations.Find("srasp").LocationName);
+                    model.StUgler.Income = GetStationIncome(shippedData, cdb.Locations.Find("sugl").LocationName);
+
                 });
 
                 var atStockpileTask = Task.Run(() =>
                 {
                     var cdb = new CtsDbContext();
-                    
-                        var skladData = cdb.WarehouseTransfers.Where(d => d.TransferTimeStamp >= fromDate && d.TransferTimeStamp <= toDate).Select(s=> new StocpileIndexData()
-                        {
-                            LocationID = s.Warehouse.LocationID,
-                            TransferTimeStamp = s.TransferTimeStamp,
-                            TotalQuantity = s.TotalQuantity
-                        }).ToArray();
-                        model.Kuz.AtStockpile = GetStockpileValue("kuz", skladData);
-                        model.Kost.AtStockpile = GetStockpileValue("kost", skladData);
-                        model.Abay.AtStockpile = GetStockpileValue("abay", skladData);
-                        model.Len.AtStockpile = GetStockpileValue("len", skladData);
-                        model.Sar1.AtStockpile = GetStockpileValue("sar1", skladData);
-                        model.Sar3.AtStockpile = GetStockpileValue("sar3", skladData);
-                        model.Kaz.AtStockpile = GetStockpileValue("kaz", skladData);
-                        model.Shah.AtStockpile = GetStockpileValue("shah", skladData);
-                        model.Tent.AtStockpile = GetStockpileValue("tent", skladData);
-                    
+
+                    var skladData = cdb.WarehouseTransfers.Where(d => d.TransferTimeStamp >= fromDate && d.TransferTimeStamp <= toDate).Select(s => new StocpileIndexData()
+                    {
+                        LocationID = s.Warehouse.LocationID,
+                        TransferTimeStamp = s.TransferTimeStamp,
+                        TotalQuantity = s.TotalQuantity
+                    }).ToArray();
+                    model.Kuz.AtStockpile = GetStockpileValue("kuz", skladData);
+                    model.Kost.AtStockpile = GetStockpileValue("kost", skladData);
+                    model.Abay.AtStockpile = GetStockpileValue("abay", skladData);
+                    model.Len.AtStockpile = GetStockpileValue("len", skladData);
+                    model.Sar1.AtStockpile = GetStockpileValue("sar1", skladData);
+                    model.Sar3.AtStockpile = GetStockpileValue("sar3", skladData);
+                    model.Kaz.AtStockpile = GetStockpileValue("kaz", skladData);
+                    model.Shah.AtStockpile = GetStockpileValue("shah", skladData);
+                    model.Tent.AtStockpile = GetStockpileValue("tent", skladData);
+
                 });
 
                 var warningTask = Task.Run(() =>
                 {
-                        AlarmHepler.GetMineAlarmLevel(model.Kuz, fromDate, toDate);
-                        AlarmHepler.GetMineAlarmLevel(model.Kost, fromDate, toDate);
-                        AlarmHepler.GetMineAlarmLevel(model.Abay, fromDate, toDate);
-                        AlarmHepler.GetMineAlarmLevel(model.Len, fromDate, toDate);
-                        AlarmHepler.GetMineAlarmLevel(model.Sar1, fromDate, toDate);
-                        AlarmHepler.GetMineAlarmLevel(model.Sar3, fromDate, toDate);
-                        AlarmHepler.GetMineAlarmLevel(model.Kaz, fromDate, toDate);
-                        AlarmHepler.GetMineAlarmLevel(model.Shah, fromDate, toDate);
-                        AlarmHepler.GetMineAlarmLevel(model.Tent, fromDate, toDate);
+                    AlarmHepler.GetMineAlarmLevel(model.Kuz, fromDate, toDate);
+                    AlarmHepler.GetMineAlarmLevel(model.Kost, fromDate, toDate);
+                    AlarmHepler.GetMineAlarmLevel(model.Abay, fromDate, toDate);
+                    AlarmHepler.GetMineAlarmLevel(model.Len, fromDate, toDate);
+                    AlarmHepler.GetMineAlarmLevel(model.Sar1, fromDate, toDate);
+                    AlarmHepler.GetMineAlarmLevel(model.Sar3, fromDate, toDate);
+                    AlarmHepler.GetMineAlarmLevel(model.Kaz, fromDate, toDate);
+                    AlarmHepler.GetMineAlarmLevel(model.Shah, fromDate, toDate);
+                    AlarmHepler.GetMineAlarmLevel(model.Tent, fromDate, toDate);
                 });
 
                 Task.WaitAll(prodFactDataTask, planDataTask, shippedDataTask, atStockpileTask, warningTask);
@@ -268,15 +268,15 @@ namespace CTS_Analytics.Controllers
             return (int)sum;
         }
 
-		private int GetShippedData(string location, IEnumerable<WagonIndexData> data)
-		{
-			var temp = data
+        private int GetShippedData(string location, IEnumerable<WagonIndexData> data)
+        {
+            var temp = data
                 .Where(t => t.LocationID.Equals(location))
                 .Where(tr => tr.Direction == CTS_Core.ProjectConstants.WagonDirection_FromObject);
-			return (int)temp?.Sum(tr => tr.Brutto);
-		}
+            return (int)temp?.Sum(tr => tr.Brutto);
+        }
 
-		private float GetStationIncome(IEnumerable<WagonIndexData> data, string locationName = "")
+        private float GetStationIncome(IEnumerable<WagonIndexData> data, string locationName = "")
         {
             return data.Where(d => d.ToDest == locationName)?.Sum(tr => tr.Brutto) ?? 0;
         }
@@ -286,10 +286,10 @@ namespace CTS_Analytics.Controllers
             var temp = data.Select(d => d.LocationID);
             var localData = data.Where(t => t.LocationID.Equals(locationName));
             if (localData.Count() > 0)
-            return (int)localData
-                .OrderBy(l => l.TransferTimeStamp)
-                .Select(f => f.TotalQuantity)
-                .LastOrDefault();
+                return (int)localData
+                    .OrderBy(l => l.TransferTimeStamp)
+                    .Select(f => f.TotalQuantity)
+                    .LastOrDefault();
 
             return 0;
         }

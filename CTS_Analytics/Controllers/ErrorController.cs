@@ -3,20 +3,20 @@ using System.Web.Mvc;
 
 namespace CTS_Analytics.Controllers
 {
-	[Culture]
-	public class ErrorController : CtsAnalController
+    [Culture]
+    public class ErrorController : CtsAnalController
     {
-		public ActionResult Index()
-		{
-			ViewBag.Title = "Regular Error";
-			return View();
-		}
+        public ActionResult Index()
+        {
+            ViewBag.Title = "Regular Error";
+            return View();
+        }
 
-		public ActionResult NotFound404()
-		{
-			ViewBag.Title = "Error 404 - File not Found";
-			return View("Index");
-		}
+        public ActionResult NotFound404()
+        {
+            ViewBag.Title = "Error 404 - File not Found";
+            return View("Index");
+        }
 
         public ActionResult UnAuth401()
         {
@@ -25,8 +25,8 @@ namespace CTS_Analytics.Controllers
         }
 
         public ActionResult Exception(ViewDataDictionary exModel)
-		{
-			return View("~/Views/Home/Exception.cshtml", exModel);
-		}
-	}
+        {
+            return View("~/Views/Home/Exception.cshtml", exModel);
+        }
+    }
 }

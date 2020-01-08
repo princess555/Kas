@@ -12,6 +12,7 @@ namespace CTS_Models.Others
         [Key]
         public int ID { get; set; }
         public int CornsNorm { get; set; }
+
         public System.DateTime TimeData { get; set; }
         public string IDLocations { get; set; }
         public string Location_ID { get; set; }

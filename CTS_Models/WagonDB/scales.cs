@@ -8,6 +8,7 @@ namespace CTS_Models.WagonDB
 
     public partial class scales
     {
+
         public int id { get; set; }
 
         [Column("id_obj")]

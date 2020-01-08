@@ -11,6 +11,7 @@ namespace CTS_Models
 		[ForeignKey("Equip")]
 		public int? EquipID { get; set; }
 		public virtual WagonScale Equip { get; set; }
+
 		[Column("WagonAnalysisID")]
 		[ForeignKey("Analysis")]
 		public int? AnalysisID { get; set; }

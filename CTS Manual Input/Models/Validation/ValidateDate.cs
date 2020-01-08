@@ -19,6 +19,7 @@ namespace CTS_Manual_Input.Models
                 {
                     return new ValidationResult("Неправильная дата - нельзя внести данные в будущее");
                 }
+
             }
         }
 }

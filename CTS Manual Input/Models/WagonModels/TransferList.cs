@@ -15,5 +15,6 @@ namespace CTS_Models
         {
             Transfers = new List<WagonTransfer>();
         }
+
     }
 }

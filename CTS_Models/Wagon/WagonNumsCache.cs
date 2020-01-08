@@ -11,6 +11,7 @@ namespace CTS_Models
 		public int ID { get; set; }
 		public DateTime Date_time { get; set; }
 		public int RecognID { get; set; }
+
 		public virtual Recogn Recogn { get; set; }
 		public int? Id_sostav { get; set; }
 		public string Number { get; set; }

@@ -9,6 +9,7 @@ namespace CTS_Models
 		string OperatorName { get; set; }
 		DateTime LasEditDateTime { get; set; }
 		DateTime TransferTimeStamp { get; set; }
+
 		bool IsValid { get; set; }
 		int Status { get; set; }
 		string ApprovedBy { get; set; }

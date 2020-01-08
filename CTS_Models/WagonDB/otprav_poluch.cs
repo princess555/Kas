@@ -8,6 +8,7 @@ namespace CTS_Models.WagonDB
 
     public partial class otprav_poluch
     {
+
         public int id { get; set; }
 
         [Required]

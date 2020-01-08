@@ -12,6 +12,7 @@ namespace CTS_Manual_Input.Helpers
         public static List<T> GetUserAuthorizedEquipment<T>(CtsDbContext cdb, IIdentity user) where T : class, IEquip
         {
 			var userLogin = user.Name.Split(new char[] { '\\' }).Last();
+
 			var domain = user.Name.Split(new char[] { '\\' }).First();
 			string equipName = typeof(T).ToString();
             var equipment = Cacher.Instance.TryRead(domain + userLogin + equipName) as List<T>;

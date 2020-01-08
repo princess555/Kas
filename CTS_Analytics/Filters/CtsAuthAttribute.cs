@@ -40,6 +40,5 @@ namespace CTS_Analytics.Filters
                 return false;
             }
         }
-
     }
 }

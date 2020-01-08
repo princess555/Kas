@@ -9,6 +9,7 @@ namespace CTS_Manual_Input.Models.Validation
             if ((float)value > 0)
             {
                 return ValidationResult.Success;
+
             }
             else
             {

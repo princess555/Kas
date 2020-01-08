@@ -13,6 +13,7 @@ namespace CTS_Analytics.Models.Mnemonic
             public string DivID { get; set; }
         }
 
+
 		public string MineName { get; set; }
 		public string DetailsViewName { get; set; }
 

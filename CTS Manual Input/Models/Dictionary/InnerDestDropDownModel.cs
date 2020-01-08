@@ -9,5 +9,6 @@ namespace CTS_Manual_Input.Models.Dictionary
   public class InnerDestDropDownModel
   {
     public IEnumerable<SelectListItem> InnerDests { get; set; }
+
   }
 }

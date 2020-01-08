@@ -13,6 +13,7 @@ namespace CTS_Models
 					if ((float)value > 0)
 					{
 						return ValidationResult.Success;
+
 					}
 					else
 					{

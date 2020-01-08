@@ -10,6 +10,7 @@ namespace CTS_Models
 		public string ID { get; set; }
 		public float? LotQuantity { get; set; }
 		[MaxLength(255)]
+
 		public string Comment { get; set; }
 		[MaxLength(255)]
 		public string OperatorName { get; set; }

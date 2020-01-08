@@ -13,6 +13,7 @@ namespace CTS_Manual_Input.Models.Common
             //Log Exception e
             HandleException.LogException(e);
 
+
             filterContext.ExceptionHandled = true;
             var model = new HandleErrorInfo(filterContext.Exception, "Home", "Failure");
             filterContext.Result = new ViewResult()

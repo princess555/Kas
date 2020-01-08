@@ -27,6 +27,7 @@ namespace CTS_Manual_Input.Controllers
 			var locations = EquipmentProvider.GetUserLocations(_cdb, User.Identity);
 			var locationsArray = locations.Select(x => x.ID).ToArray();
 			var analysis = _cdb.MiningAnalyzes.Where(t => locationsArray.Contains(t.LocationID)).Where(v => v.IsValid).ToList();
+			
 			@ViewBag.Title = "Анализы по добыче";
 
 			return View(new MiningAnalysisView

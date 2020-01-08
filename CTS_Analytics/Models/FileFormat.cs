@@ -5,13 +5,14 @@ using System.Web;
 
 namespace CTS_Analytics.Models
 {
-  public class FileFormat
-  {
-    private string fileformat;
-
-    public FileFormat(string format)
+    public class FileFormat
     {
-      fileformat = format;
+        private string fileformat;
+
+        public FileFormat(string format)
+        {
+            fileformat = format;
+
+        }
     }
-  }
 }

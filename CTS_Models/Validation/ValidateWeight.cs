@@ -2,26 +2,27 @@
 
 namespace CTS_Models
 {
-  public class ValidateWeight : ValidationAttribute
-  {
-    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+    public class ValidateWeight : ValidationAttribute
     {
-      try
-      {
-        if ((value != null) && ((float)value > 0))
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-          return ValidationResult.Success;
+            try
+            {
+                if ((value != null) && ((float)value > 0))
+                {
+                    return ValidationResult.Success;
+
+                }
+                else
+                {
+                    return new ValidationResult("Неправильный вес");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return new ValidationResult("Неверный формат числа");
+            }
         }
-        else
-        {
-          return new ValidationResult("Неправильный вес");
-        }
-      }
-      catch (System.Exception ex)
-      {
-        return new ValidationResult("Неверный формат числа");
-      }
     }
-  }
 }
 

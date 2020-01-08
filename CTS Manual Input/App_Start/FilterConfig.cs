@@ -8,6 +8,7 @@ namespace CTS_Manual_Input
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+
         }
     }
 }

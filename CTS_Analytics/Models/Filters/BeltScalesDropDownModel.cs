@@ -6,8 +6,9 @@ using System.Web.Mvc;
 
 namespace CTS_Analytics.Models
 {
-  public class BeltScalesDropDownModel
-  {
-    public IEnumerable<SelectListItem> BeltScales { get; set; }
-  }
+    public class BeltScalesDropDownModel
+    {
+        public IEnumerable<SelectListItem> BeltScales { get; set; }
+
+    }
 }

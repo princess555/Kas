@@ -14,6 +14,7 @@ namespace CTS_Core
 		static SmtpClient _smtpClient;
 		static MailAddress _mailSender;
 
+
 		static CtsEmailSender()
 		{
 			_smtpClient = new SmtpClient();

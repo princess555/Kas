@@ -18,6 +18,7 @@ namespace CTS_Manual_Input.Controllers
 	{
 		private CtsDbContext _cdb;
 
+
 		public BeltScalesController()
 		{
 			_cdb = new CtsDbContext();

@@ -13,6 +13,7 @@ namespace CTS_Models
 		public string NameEng { get; set; }
 		public string LocationID { get; set; }
 		public virtual Location Location { get; set; }
+
 		public string Grade { get; set; }
 		public string NameKZ { get; set; }
 	}

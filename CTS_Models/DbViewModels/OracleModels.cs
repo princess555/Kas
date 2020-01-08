@@ -13,6 +13,7 @@ namespace CTS_Models.DbViewModels
         public decimal Plan { get; set; }
     }
 
+
     [Table("OraclePlanB")]
     public class OralcleMiningPlanB
     {

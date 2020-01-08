@@ -13,5 +13,6 @@ namespace CTS_Analytics.Models
         public string ActionName { get; set; }  // действие, где возникло исключение
         public string StackTrace { get; set; }  // стек исключения
         public DateTime Date { get; set; }  // дата и время исключения
+
     }
 }

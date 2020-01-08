@@ -9,5 +9,6 @@ namespace CTS_Manual_Input.Models.ApproveModels
 		public List<T> EditedTransfers { get; set; }
 		public List<T> ObsoleteTransfers { get; set; }
 		public List<T> DeletedTransfers { get; set; }
+
 	}
 }

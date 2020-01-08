@@ -16,6 +16,7 @@ namespace Codingconvert_service
         static void Main(string[] args)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["WWALMDB"].ConnectionString;
+           
             //string connectionString = "data source=10.21.199.28;initial catalog=WWALMDB;persist security info=True;user id=sa;password=Aaaa-1111;";
             //string connectionString = "data source=GRISHAYEVK\\SQLEXPRESS;initial catalog=Test;Integrated Security=True;";
             //string db = "Test";

@@ -8,6 +8,7 @@ namespace CTS_Analytics.Models.Mnemonic
         public suglModel(string id)
         {
             LocationID = id;
+
         }
     }
 }

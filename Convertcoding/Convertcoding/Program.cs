@@ -21,6 +21,7 @@ namespace Convertcoding
             //string connectionString = "data source=GRISHAYEVK\\SQLEXPRESS;initial catalog=Test;Integrated Security=True;";
 
             //string db = "Test";
+            
             string db = "WWALMDB";
 
             DataTable comment_table = new DataTable();

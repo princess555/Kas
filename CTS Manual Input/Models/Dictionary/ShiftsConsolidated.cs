@@ -14,5 +14,6 @@ namespace CTS_Manual_Input.Models.Dictionary
 		public TimeSpan TimeStartSecondShift { get; set; }
 		public TimeSpan TimeStartThirdShift { get; set; }
 		public TimeSpan TimeStartFourthShift { get; set; }
+
 	}
 }

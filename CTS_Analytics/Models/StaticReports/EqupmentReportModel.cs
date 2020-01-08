@@ -9,6 +9,7 @@ namespace CTS_Analytics.Models.StaticReports
     {
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
+
         public IEnumerable<SelectListItem> Periods { get; set; }
         public IEnumerable<SelectListItem> Mines { get; set; }
         public IEnumerable<T> Equipment { get; set; }

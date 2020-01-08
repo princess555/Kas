@@ -13,6 +13,7 @@ namespace CTS_Models
 		public string AnalysisID { get; set; }
 		[Required]
 		[ValidateDate]
+
 		public DateTime AnalysisTimeStamp { get; set; }
 		public DateTime LasEditDateTime { get; set; }
 		[MaxLength(255)]

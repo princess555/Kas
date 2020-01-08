@@ -7,9 +7,10 @@ using System.Web.Mvc;
 
 namespace CTS_Manual_Input.Models
 {
-	public class WarehousesAndTransfersModel
-	{
-		public List<Warehouse> Warehouses { get; set; }
-		public PagedList.IPagedList<WarehouseMeasure> WarehouseMeasures { get; set; }
-	}
+    public class WarehousesAndTransfersModel
+    {
+        public List<Warehouse> Warehouses { get; set; }
+        public PagedList.IPagedList<WarehouseMeasure> WarehouseMeasures { get; set; }
+
+    }
 }

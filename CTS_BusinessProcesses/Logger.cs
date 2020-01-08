@@ -12,6 +12,7 @@ namespace CTS_Core
 	{
 		static private Object thisLock = new Object();
 
+
 		static void AddSystemLog(string log)
 		{
 			try

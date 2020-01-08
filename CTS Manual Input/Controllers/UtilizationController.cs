@@ -16,6 +16,7 @@ namespace CTS_Manual_Input.Controllers
 	[CtsAuthorize(Roles = Roles.RockUserRoleName)]
 	public class UtilizationController : Controller
 	{
+
 		private CtsDbContext _cdb;
 
 		public UtilizationController()

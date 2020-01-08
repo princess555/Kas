@@ -14,6 +14,7 @@ namespace CTS_Models.WagonDB
         [StringLength(50)]
         public string login { get; set; }
 
+
         [Required]
         [StringLength(50)]
         public string pass { get; set; }

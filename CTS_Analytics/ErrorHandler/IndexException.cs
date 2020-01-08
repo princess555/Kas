@@ -11,7 +11,7 @@ namespace CTS_Analytics.ErrorHandler
 {
     public class IndexException : FilterAttribute, IExceptionFilter
     {
-       
+
         public void OnException(System.Web.Mvc.ExceptionContext filterContext)
         {
             if (!filterContext.ExceptionHandled && filterContext.Exception is IndexOutOfRangeException)

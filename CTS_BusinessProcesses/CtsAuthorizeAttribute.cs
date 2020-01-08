@@ -10,6 +10,7 @@ namespace CTS_Core
 		{
 
 			return CtsAuthorizeProvider.CheckIsInRole(httpContext.User.Identity, base.Roles) || base.AuthorizeCore(httpContext);
+		
 		}
 	}
 }

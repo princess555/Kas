@@ -9,5 +9,6 @@ namespace CTS_Manual_Input.Models.LabModels
 		public List<Location> Locations { get; set; }
 		public bool CanEdit { get; set; }
 		public bool CanDelete { get; set; }
+
 	}
 }

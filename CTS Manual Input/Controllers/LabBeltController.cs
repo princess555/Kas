@@ -18,6 +18,7 @@ namespace CTS_Manual_Input.Controllers
 	public class LabBeltController : Controller
 	{
 		private CtsDbContext _cdb;
+
 		public LabBeltController()
 		{
 			_cdb = new CtsDbContext();

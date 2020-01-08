@@ -11,6 +11,7 @@ namespace CTS_Models
 		[Required(ErrorMessage = "Поле должно быть установлено")]
 		[MaxLength(255)]
 		public string LiftingID { get; set; }
+
 		[Required]
 		public DateTime LasEditDateTime { get; set; }
 		[Required]

@@ -13,6 +13,7 @@ namespace CTS_Models.DBContext
 			: base("CentralDbConnection")
 		{ }
 
+
 		public CtsDbContext(string connectionString)
 			: base(connectionString)
 		{ }

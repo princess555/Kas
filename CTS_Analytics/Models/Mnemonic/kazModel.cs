@@ -19,6 +19,7 @@ namespace CTS_Analytics.Models.Mnemonic
             Crusher2 = new Mine_crusher(locationID);
             RockUtil = new Mine_rockUtil(locationID);
             Kotel = new Mine_Kotel(locationID);
+
         }
 
         public Mine_skip SkipPos1 { get; set; }

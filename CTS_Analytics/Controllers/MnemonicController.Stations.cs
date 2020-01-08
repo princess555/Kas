@@ -13,13 +13,13 @@ namespace CTS_Analytics.Controllers
         public ActionResult cofv()
         {
             var model = new cofvModel();
-            model.VagonCountCofv = Builder.GetWagonCounterModel(19); 
+            model.VagonCountCofv = Builder.GetWagonCounterModel(19);
             model.VagonNorth = Builder.GetWagonScaleModel(11);
             model.VagonSouth1 = Builder.GetWagonScaleModel(17);
             model.VagonSouth2 = Builder.GetWagonScaleModel(18);
             model.Belt = Builder.GetBeltScaleModel(20);
             model.Kotel = Builder.GetMineKotelModel("cofv");
-            return View("tsof2",model);
+            return View("tsof2", model);
         }
 
         public ActionResult cofv_more()

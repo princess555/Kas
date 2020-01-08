@@ -9,5 +9,6 @@ namespace CTS_Manual_Input.Models
     {
         public DateTime Times { get; set; }
         public int CountVagons { get; set; }
+
     }
 }

@@ -11,6 +11,7 @@ namespace CTS_Models
 		public int ID { get; set; }
 		[Required]
 		public int SkipID { get; set; }
+
 		public virtual Skip Skip { get; set; }
 		[Required]
 		public float Weight { get; set; }

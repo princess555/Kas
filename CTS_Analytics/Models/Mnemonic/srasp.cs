@@ -8,6 +8,7 @@ namespace CTS_Analytics.Models.Mnemonic
         public sraspModel(string id)
         {
             LocationID = id;
+
         }
 
         public Mine_sklad Sklad { get; set; }

@@ -11,6 +11,7 @@ namespace CTS_Manual_Input.Controllers
 	[CtsAuthorize(Roles = Roles.ApproveUserRoleName)]
 	public class ApproveController : Controller
 	{
+
 		private CtsDbContext _cdb;
 
 		public ApproveController()

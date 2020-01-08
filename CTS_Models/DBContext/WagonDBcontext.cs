@@ -11,6 +11,7 @@ namespace CTS_Models.DBContext
         {
         }
 
+
         public virtual DbSet<napravlenie> napravlenie { get; set; }
         public virtual DbSet<objects> objects { get; set; }
         public virtual DbSet<operators> operators { get; set; }

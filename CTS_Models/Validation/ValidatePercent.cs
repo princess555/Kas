@@ -12,6 +12,7 @@ namespace CTS_Models
 					if (((float)value >= 0) && ((float)value <= 100))
 					{
 						return ValidationResult.Success;
+
 					}
 					else
 					{

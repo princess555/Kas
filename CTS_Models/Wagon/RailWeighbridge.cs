@@ -13,6 +13,7 @@ namespace CTS_Models.Wagon
     {
         [Key]
         public int ID { get; set; }
+
         public DateTime TransferTimeStamp { get; set; }
         public Double? Weight { get; set; }
     }

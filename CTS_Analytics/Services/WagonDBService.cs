@@ -11,6 +11,7 @@ using CTS_Analytics.Models;
 
 namespace CTS_Analytics.Services
 {
+
     public class WagonDbService
     {
         private readonly WagonDBcontext wagdb;

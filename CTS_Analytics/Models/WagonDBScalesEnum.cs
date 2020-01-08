@@ -8,5 +8,6 @@ namespace CTS_Analytics.Models
     enum WagonDBScalesEnum
     {
         abay = 1
+
     }
 }

@@ -9,6 +9,7 @@ namespace CTS_Models.WagonDB
     [Table("recogn")]
     public partial class recogn
     {
+
         public int id { get; set; }
 
         [Column("id_obj")]

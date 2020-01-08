@@ -15,6 +15,7 @@ namespace CTS_Models
         }
         else
         {
+
           return new ValidationResult("Вес должен быть > 0");
         }
       }

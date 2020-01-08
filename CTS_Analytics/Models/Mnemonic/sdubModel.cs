@@ -8,6 +8,7 @@ namespace CTS_Analytics.Models.Mnemonic
         public sdubModel(string id)
         {
             LocationID = id;
+
         }
     }
 }

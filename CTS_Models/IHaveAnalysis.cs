@@ -9,5 +9,6 @@ namespace CTS_Models
 	public interface IHaveAnalysis 
 	{
 		int? AnalysisID { get; set; }
+
 	}
 }

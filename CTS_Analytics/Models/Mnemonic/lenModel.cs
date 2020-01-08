@@ -9,6 +9,7 @@ namespace CTS_Analytics.Models.Mnemonic
     {
         public lenModel(string locationID = "len") : base(locationID)
         {
+
             SkipPos1 = new Mine_skip(locationID);
             SkipPos2 = new Mine_skip(locationID);
             Belt1 = new Mine_konv(locationID);

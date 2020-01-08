@@ -66,7 +66,7 @@ namespace CTS_Analytics.Factories
                 return new Mine_skip("Unknown");
             }
 
-             var model = new Mine_skip(skip.LocationID);
+            var model = new Mine_skip(skip.LocationID);
             model.SkipID = skipID;
             model.SkipName = GetEquipNameOnCurrentLanguate(skip);
             model.MineName = GetLocationNameOnCurrentLanguate(skip.LocationID);
@@ -75,7 +75,7 @@ namespace CTS_Analytics.Factories
             model.TotalSkipsPerTimeInterval = model.SkipTransfers.Sum(s => int.Parse(s.LiftingID));
 
 
-           model.TotalTonnsPerTimeInterval = model.SkipTransfers.Select(t => t.SkipWeight * int.Parse(t.LiftingID)).Sum();
+            model.TotalTonnsPerTimeInterval = model.SkipTransfers.Select(t => t.SkipWeight * int.Parse(t.LiftingID)).Sum();
             model.LastSkipLiftingTime = model.SkipTransfers.Any() ? model.SkipTransfers.First().TransferTimeStamp : new DateTime?();
 
             var fromShiftDate = _cdbService.GetStartShiftTime(skip.LocationID);
@@ -137,7 +137,7 @@ namespace CTS_Analytics.Factories
                     .Any(v => v.OperatorName != ProjectConstants.SystemPlarformOperatorName);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
@@ -257,7 +257,7 @@ namespace CTS_Analytics.Factories
                 }
                 else
                 {
-                    if(dayBuffer != null)
+                    if (dayBuffer != null)
                     {
                         Models.CofvVagons cofvVagons = new Models.CofvVagons { Times = DateTime.Parse(dateBuffer), CountVagons = counter };
                         list.Add(cofvVagons);
@@ -269,7 +269,7 @@ namespace CTS_Analytics.Factories
             }
 
             var count = db.RailWeighbridges.Where(p => p.TransferTimeStamp >= fromDate && p.TransferTimeStamp <= toDate).Count();
-           // list.Sort();
+            // list.Sort();
 
             model.RailWeigh = list;
             model.Time = DateTime.Parse(lastday.ToString());

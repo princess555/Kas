@@ -11,6 +11,7 @@ namespace CTS_Models
 		public virtual Warehouse Warehouse { get; set; }
 		[Required]
 		public DateTime TransferTimeStamp { get; set; }
+
 		public float? LotQuantity { get; set; }
 		public double? TotalQuantity { get; set; }
 		[MaxLength(255)]

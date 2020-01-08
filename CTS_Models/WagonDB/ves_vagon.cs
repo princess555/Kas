@@ -13,6 +13,7 @@ namespace CTS_Models.WagonDB
         [Column(TypeName = "datetime2")]
         public DateTime date_time_brutto { get; set; }
 
+
         [Column(TypeName = "datetime2")]
         public DateTime date_time_tara { get; set; }
 

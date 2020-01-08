@@ -560,7 +560,9 @@ namespace CTS_Analytics.Controllers
                     selectedEquipment[i] = selectedEquipment[i].Remove(0, 1);
                     selectedEquipment[i] = Int32.Parse(selectedEquipment[i]).ToString("00");
                 }
+
             return selectedEquipment;
+
         }
     }
 }

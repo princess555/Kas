@@ -15,6 +15,7 @@ namespace CTS_Models
 		[Key, Column(Order = 1)]
 		public string Domain { get; set; }
 
+
 		public ICollection<CtsRole> CtsRoles { get; set; }
 		public CtsUser()
 		{

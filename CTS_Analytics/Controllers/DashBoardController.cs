@@ -209,7 +209,7 @@ namespace CTS_Analytics.Controllers
         {
             return Mine("tent");
         }
-        
+
         [MyAuth(Roles = Roles.MineAbayRoleName)]
         public ActionResult Alarms_Abay()
         {

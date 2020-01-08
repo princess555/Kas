@@ -12,12 +12,12 @@ namespace CTS_Analytics.Controllers
 {
 
     [Culture]
-	//[CtsAuthorize(Roles = Roles.AnalyticsRoleName)]
-	public class FilterController : CtsAnalController
+    //[CtsAuthorize(Roles = Roles.AnalyticsRoleName)]
+    public class FilterController : CtsAnalController
     {
-		CtsDbContext cdb = new CtsDbContext();
+        CtsDbContext cdb = new CtsDbContext();
 
-     //   [OutputCache(VaryByParam = "*", Duration = 0, NoStore = true)]
+        //   [OutputCache(VaryByParam = "*", Duration = 0, NoStore = true)]
         public ActionResult GetWagonScales(string Locations)
         {
             string lang = getUserLang(Request.Cookies["lang"]);
@@ -61,7 +61,7 @@ namespace CTS_Analytics.Controllers
             return PartialView("_BeltScalesDynDropDown", model);
         }
 
-     //   [OutputCache(VaryByParam = "*", Duration = 0, NoStore = true)]
+        //   [OutputCache(VaryByParam = "*", Duration = 0, NoStore = true)]
         public ActionResult GetSkips(string Locations)
         {
             string lang = getUserLang(Request.Cookies["lang"]);

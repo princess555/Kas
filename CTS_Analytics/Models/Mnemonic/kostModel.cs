@@ -25,6 +25,7 @@ namespace CTS_Analytics.Models.Mnemonic
             Kotel = new Mine_Kotel(locationID);
             Raspozn1 = new RaspoznModel();
             Raspozn2 = new RaspoznModel();
+
         }
 
         public Mine_skip Skip6t { get; set; }

@@ -14,6 +14,7 @@ namespace CTS_Models
 					if ((numericValue > 0) && (numericValue < 500))
 					{
 						return ValidationResult.Success;
+
 					}
 					else
 					{

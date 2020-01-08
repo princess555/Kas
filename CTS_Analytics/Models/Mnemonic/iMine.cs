@@ -8,6 +8,7 @@ namespace CTS_Analytics.Models.Mnemonic
     public interface iMine
     {
         string MineName { get; set; }
-		string DetailsViewName { get; set; }
-	}
+        string DetailsViewName { get; set; }
+
+    }
 }

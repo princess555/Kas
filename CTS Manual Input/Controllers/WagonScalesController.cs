@@ -15,6 +15,7 @@ using System.Web.Mvc;
 
 namespace CTS_Manual_Input.Controllers
 {
+
 	public class MyStringifiedNumberComparer : IEqualityComparer<string>
 	{
 		public bool Equals(string x, string y)

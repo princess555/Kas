@@ -13,6 +13,7 @@ namespace CTS_Models.DBContext
 			: base(connectionString)
 		{ }
 
+
 		public DbSet<T> DbSet { get; set; }
 	}
 }

@@ -257,6 +257,7 @@ namespace CTS_Analytics.Controllers
             model.PagedWagonTrasnfersAndPhotos = GetPagedWagonTransfersAndPhotos(page, model.WagonTransfers.ToList());
 
             return View("Doc-detail/doc_detail_Wagon_search", model);
+
         }
     }
 }

@@ -8,5 +8,6 @@ namespace CTS_Manual_Input.Models.Dictionary
 	{
         public IList<Skip> Skips { get; set; }
 		public PagedList.IPagedList<SkipWeightWithAct> SkipWeightsActs { get; set; }
+
     }
 }

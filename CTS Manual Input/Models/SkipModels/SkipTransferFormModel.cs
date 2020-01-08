@@ -62,5 +62,6 @@ namespace CTS_Manual_Input.Models.SkipModels
             ApprovedBy = skipTransfer.ApprovedBy;
             InheritedFrom = skipTransfer.InheritedFrom;
         }
+
     }
 }

@@ -10,10 +10,7 @@ namespace CTS_Analytics.Filters
 {
     public class CultureAttribute : FilterAttribute, IActionFilter
     {
-        public void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-
-        }
+        public void OnActionExecuted(ActionExecutedContext filterContext) {}
 
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {

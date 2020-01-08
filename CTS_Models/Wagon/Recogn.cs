@@ -11,6 +11,7 @@ namespace CTS_Models
 		public int ID { get; set; }
 		[MaxLength(255)]
 		public string NameEng { get; set; }
+
 		public string Name { get; set; }
 		public string LocationID { get; set; }
 		public virtual Location Location { get; set; }

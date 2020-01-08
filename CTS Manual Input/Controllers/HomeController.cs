@@ -16,6 +16,7 @@ namespace CTS_Manual_Input.Controllers
 		CtsDbContext db = new CtsDbContext();
         public ActionResult Index()
         {
+
                 var model = new HomePageModel();
             try
             {

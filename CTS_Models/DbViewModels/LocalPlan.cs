@@ -10,6 +10,7 @@ namespace CTS_Models.DbViewModels
         int Plan { get; set; }
     }
 
+
     public interface iLocalPlanWithLocationID : iLocalPlan
     {
         string LocationID { get; set; }

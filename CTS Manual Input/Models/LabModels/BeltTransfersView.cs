@@ -11,5 +11,6 @@ namespace CTS_Manual_Input.Models.LabModels
 		public PagedList.IPagedList<BeltTransfer> BeltTransfers { get; set; }
 		public bool CanEdit { get; set; }
 		public bool CanDelete { get; set; }
+
 	}
 }

@@ -8,6 +8,7 @@ namespace CTS_Analytics.Models.Mnemonic
         public sabayModel(string id)
         {
             LocationID = id;
+
         }
 
     }

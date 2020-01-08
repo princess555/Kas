@@ -51,7 +51,6 @@ namespace CTS_Analytics.Models.Mnemonic
         public Mine_vagon Vagon { get; set; }
         public Mine_Kotel Kotel { get; set; }
         public Mine_rockUtil VehiScales { get; set; }
-
         public string MineName { get; set; }
         public string DetailsViewName { get; set; }
     }

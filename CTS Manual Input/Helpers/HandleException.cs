@@ -14,6 +14,7 @@ namespace CTS_Manual_Input.Helpers
             // Путь .\\Log
             string pathToLog = Path.Combine(HttpContext.Current.Request.MapPath(@"~/"), "Log");
 
+
             if (!Directory.Exists(pathToLog))
                Directory.CreateDirectory(pathToLog); // Создаем директорию, если нужно
 

@@ -12,6 +12,7 @@ namespace CTS_Models
 		[MaxLength(255)]
 		public string LocationName { get; set; }
 		[MaxLength(255)]
+
 		public string LocationNameEng { get; set; }
 		[MaxLength(255)]
 		public string DomainName { get; set; }

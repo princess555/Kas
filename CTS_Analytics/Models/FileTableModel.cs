@@ -18,5 +18,6 @@ namespace CTS_Analytics.Models
         public string Author { get; set; }
         public string FileName { get; set; }
         public DateTime CreationDate { get; set; }
+
     }
 }

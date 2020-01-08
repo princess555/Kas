@@ -9,6 +9,7 @@ namespace CTS_Models
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int ID { get; set; }
 		[MaxLength(255)]
+
 		public string Name { get; set; }
 		public string NameEng { get; set; }
 		public string LocationID { get; set; }

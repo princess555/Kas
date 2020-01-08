@@ -9,5 +9,6 @@ namespace CTS_Analytics.Models.StaticReports
         public IEnumerable<SelectListItem> Mines { get; set; }
 
         public string[] SelectedMines { get; set; }
+
     }
 }

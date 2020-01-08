@@ -8,6 +8,7 @@ namespace CTS_Models
 		[Key]
 		public string ID { get; set; }
 		public string FromDestID { get; set; }
+
 		public virtual Location FromDest { get; set; }
 		[MaxLength(255)]
 		public string ToDest { get; set; }

@@ -18,6 +18,7 @@ namespace CTS_Analytics.Models.Mnemonic
             public int LastTrainWagonCount { get; set; }
             public string DivID { get; set; }
             public int WagonScalesID { get; set; }
+
         }
 
         public class FromStationData

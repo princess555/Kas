@@ -11,6 +11,7 @@ namespace CTS_Models.WagonDB
     {
         public int id { get; set; }
 
+
         [Column(TypeName = "datetime2")]
         public DateTime date_time { get; set; }
 

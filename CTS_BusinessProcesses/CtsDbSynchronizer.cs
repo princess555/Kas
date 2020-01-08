@@ -14,6 +14,7 @@ namespace CTS_Core
 	{
 		private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
 
+
 		private static bool SyncFromLocalToCental<TTransfer, TEquip>(ConnectionStringSettings connectionStringSettings)
 			where TTransfer : class, ITransfer
 			where TEquip : class, IEquip

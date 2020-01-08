@@ -11,5 +11,6 @@ namespace CTS_Manual_Input.Models.Dictionary
     {
         public Skip Skip { get; set; }
         public SelectList Locations { get; set; }
+
     }
 }

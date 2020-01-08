@@ -8,10 +8,9 @@ namespace CTS_Analytics.Models
 {
     public class LoggerContext:DbContext
     {
-        public LoggerContext() : base("DefaultConnection")
-        {
-        }
+        public LoggerContext() : base("DefaultConnection"){}
 
         public DbSet<ExceptionDetail> ExceptionDetails { get; set; }
+
     }
 }

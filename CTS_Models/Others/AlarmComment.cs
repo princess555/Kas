@@ -11,6 +11,7 @@ namespace CTS_Models
 		[MaxLength(255)]
 		public string Comment { get; set; }
 		[MaxLength(255)]
+
 		public string CommentEng { get; set; }
 		[MaxLength(255)]
 		public string CommentKZ { get; set; }

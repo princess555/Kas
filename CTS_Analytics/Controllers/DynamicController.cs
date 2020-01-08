@@ -16,7 +16,7 @@ namespace CTS_Analytics.Controllers
     //[CtsAuthorize(Roles = Roles.AnalyticsRoleName)]
     public class DynamicController : CtsAnalController
     {
-       
+
         CtsDbContext cdb = new CtsDbContext();
         private List<String> fileFormats = new List<String> { "web", "pdf" };
 
@@ -31,28 +31,28 @@ namespace CTS_Analytics.Controllers
         private DynamicModel GetModel()
         {
             var model = new DynamicModel();
-           
-                model.FromDate = System.DateTime.Today.AddDays(-7);
-                model.ToDate = System.DateTime.Today.AddDays(1);
-                model.FileFormats = fileFormats.Select(x => new SelectListItem { Text = x, Value = x });//web pdf
 
-                List<String> reportTypes = new List<String>();
-                reportTypes.Add(Resources.ResourceDynamic.ReportBelt);
-                reportTypes.Add(Resources.ResourceDynamic.ReportSkip);
-                reportTypes.Add(Resources.ResourceDynamic.ReportComparisonMining);
-                model.ReportTypes = reportTypes.Select(x => new SelectListItem { Text = x, Value = x });
+            model.FromDate = System.DateTime.Today.AddDays(-7);
+            model.ToDate = System.DateTime.Today.AddDays(1);
+            model.FileFormats = fileFormats.Select(x => new SelectListItem { Text = x, Value = x });//web pdf
 
-                string lang = getUserLang(Request.Cookies["lang"]);
+            List<String> reportTypes = new List<String>();
+            reportTypes.Add(Resources.ResourceDynamic.ReportBelt);
+            reportTypes.Add(Resources.ResourceDynamic.ReportSkip);
+            reportTypes.Add(Resources.ResourceDynamic.ReportComparisonMining);
+            model.ReportTypes = reportTypes.Select(x => new SelectListItem { Text = x, Value = x });
 
-                if (lang == "en")
-                {
-                    model.Locations = cdb.Locations.ToList().Select(N => new SelectListItem { Text = N.LocationNameEng, Value = N.ID.ToString() });
-                }
-                else
-                {
-                    model.Locations = cdb.Locations.ToList().Select(N => new SelectListItem { Text = N.LocationName, Value = N.ID.ToString() });
-                }
-         
+            string lang = getUserLang(Request.Cookies["lang"]);
+
+            if (lang == "en")
+            {
+                model.Locations = cdb.Locations.ToList().Select(N => new SelectListItem { Text = N.LocationNameEng, Value = N.ID.ToString() });
+            }
+            else
+            {
+                model.Locations = cdb.Locations.ToList().Select(N => new SelectListItem { Text = N.LocationName, Value = N.ID.ToString() });
+            }
+
 
             return model;
         }
@@ -61,7 +61,7 @@ namespace CTS_Analytics.Controllers
         public ActionResult GetReport(DynamicModel model)
         {
             //WebApi
-         
+
             string DRip = ConfigurationManager.AppSettings["DRip"];
             string reportName = "";
             var url = new StringBuilder("http://" + DRip + "/DRWeb/WebAPI/GenReport.aspx?report=reportName" + "&format=" + model.fileFormatsInForm +
@@ -73,55 +73,55 @@ namespace CTS_Analytics.Controllers
             //    "&stop=" + model.ToDate.ToString("yyyy-MM-dd") + "%20" + model.ToDate.ToString("HH:mm:ss") + "&ptype=abs&utctime=true");
 
             //+"&ptype=abs&utctime=true"
-           
-                //Генерация url для динамического отчета по конв.весам
-                if (model.reportTypesInForm == Resources.ResourceDynamic.ReportBelt)
+
+            //Генерация url для динамического отчета по конв.весам
+            if (model.reportTypesInForm == Resources.ResourceDynamic.ReportBelt)
+            {
+                reportName = "Dyn_belt";
+                url.Replace("reportName", reportName);
+
+                for (int i = 0; i < 30; i++)
                 {
-                    reportName = "Dyn_belt";
-                    url.Replace("reportName", reportName);
+                    url.Append("&ipp").Append((i + 1).ToString()).Append("=");
 
-                    for (int i = 0; i < 30; i++)
+                    if (i < model.beltScalesInForm.Length)
                     {
-                        url.Append("&ipp").Append((i + 1).ToString()).Append("=");
-
-                        if (i < model.beltScalesInForm.Length)
-                        {
-                            url.Append(model.beltScalesInForm[i].ToString().Substring(1));
-                        }
-                        else
-                        {
-                            url.Append("0");
-                        }
+                        url.Append(model.beltScalesInForm[i].ToString().Substring(1));
+                    }
+                    else
+                    {
+                        url.Append("0");
                     }
                 }
-                //Генерация url для динамического отчета по скипам
-                else if (model.reportTypesInForm == Resources.ResourceDynamic.ReportSkip)
-                {
-                    reportName = "Dyn_skip";
-                    url.Replace("reportName", reportName);
+            }
+            //Генерация url для динамического отчета по скипам
+            else if (model.reportTypesInForm == Resources.ResourceDynamic.ReportSkip)
+            {
+                reportName = "Dyn_skip";
+                url.Replace("reportName", reportName);
 
-                    for (int i = 0; i < 30; i++)
+                for (int i = 0; i < 30; i++)
+                {
+                    url.Append("&ipp").Append((i + 1).ToString()).Append("=");
+
+                    if (i < model.skipsInForm.Length)
                     {
-                        url.Append("&ipp").Append((i + 1).ToString()).Append("=");
-
-                        if (i < model.skipsInForm.Length)
-                        {
-                            url.Append(model.skipsInForm[i].ToString().Substring(1));
-                        }
-                        else
-                        {
-                            url.Append("0");
-                        }
+                        url.Append(model.skipsInForm[i].ToString().Substring(1));
                     }
-                    Console.WriteLine();
+                    else
+                    {
+                        url.Append("0");
+                    }
                 }
-                //Генерация url для динамического сравнения по добыче УД и CTS
-                else if (model.reportTypesInForm == Resources.ResourceDynamic.ReportComparisonMining)
-                {
-                    reportName = "ComparisonMiningInfo_d30004_all";
-                    url.Replace("reportName", reportName);
-                }
-          
+                Console.WriteLine();
+            }
+            //Генерация url для динамического сравнения по добыче УД и CTS
+            else if (model.reportTypesInForm == Resources.ResourceDynamic.ReportComparisonMining)
+            {
+                reportName = "ComparisonMiningInfo_d30004_all";
+                url.Replace("reportName", reportName);
+            }
+
             return Json(new { url = url.ToString() });
         }
     }

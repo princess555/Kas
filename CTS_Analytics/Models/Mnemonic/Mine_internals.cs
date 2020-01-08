@@ -10,6 +10,7 @@ namespace CTS_Analytics.Models.Mnemonic
 {
 	public class Mine_internals: iMine
     {
+
 		public string ReturnID { get; set; }
         public string MineName { get; set; }
         public string DivID { get; set; }

@@ -8,7 +8,8 @@ namespace CTS_Manual_Input.Models
     {
         public List<WagonScale> WagonScales { get; set; }
         public PagedList.IPagedList<WagonTransfer> Transfers { get; set; }
-    public bool CanEdit { get; set; }
-    public bool CanDelete { get; set; }
+        public bool CanEdit { get; set; }
+        public bool CanDelete { get; set; }
+
   }
 }

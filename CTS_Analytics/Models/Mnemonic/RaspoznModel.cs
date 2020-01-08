@@ -8,6 +8,7 @@ namespace CTS_Analytics.Models.Mnemonic
         public List<RaspoznItem> RaspoznList { get; set; }
         public string DivID { get; set; }
         public int RaspoznID { get; set; }
+
     }
 
     public class RaspoznItem

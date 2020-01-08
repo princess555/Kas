@@ -10,6 +10,7 @@ namespace CTS_Analytics.Models.Mnemonic
 	{
 		public MnemonicMain()
 		{
+
 			Shah = new MineGeneral("shah");
 			Tent = new MineGeneral("tent");
 			Len = new MineGeneral("len");

@@ -15,8 +15,6 @@ namespace CTS_Analytics.Helpers
 {
     public static class ReportRoleHelper
     {
-
-
         public static bool UserHasAnyReportRole(IIdentity user)
         {
             if (Cacher.Instance.TryRead(user.Name + "CheckUserReportRole") is bool)

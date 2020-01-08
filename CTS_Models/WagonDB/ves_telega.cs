@@ -10,6 +10,7 @@ namespace CTS_Models.WagonDB
     {
         public int id { get; set; }
 
+
         public int id_scale { get; set; }
 
         [Column(TypeName = "datetime2")]

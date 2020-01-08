@@ -12,7 +12,6 @@ using System.Data.SqlClient;
 
 namespace CTS_Analytics.Filters
 {
-
     public class MyAuthAttribute : AuthorizeAttribute
     {
         object loginDB, domainDB, rolesDB;

@@ -12,6 +12,7 @@ namespace CTS_Analytics.Helpers
     {
         public int AlarmCount { get; set; }
         public int AlarmPriorityCount { get; set; }
+
     }
 
     public class AlarmHepler
@@ -68,7 +69,7 @@ namespace CTS_Analytics.Helpers
             return alarmCountModel;
         }
 
-        public static void GetMineAlarmLevel (MineGeneral mine, DateTime fromDate, DateTime toDate)
+        public static void GetMineAlarmLevel(MineGeneral mine, DateTime fromDate, DateTime toDate)
         {
             string queryString = "select am.Priority " +
                 "from [WWALMDB].[dbo].[AlarmMaster] am " +
@@ -98,16 +99,16 @@ namespace CTS_Analytics.Helpers
             new SqlConnection(ConfigurationManager.ConnectionStrings["WWALMDB"].ConnectionString))
             {
                 SqlCommand command = new SqlCommand(queryString, connection);
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        if (reader.GetInt16(0) > ProjectConstants.CoalWarningPrio)
-                            mine.CoalWarning = true;
-                        if (reader.GetInt16(0) > ProjectConstants.CoalAlarmPrio)
-                            mine.CoalAlarm = true;
-                    }
-                    reader.Close();
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader.GetInt16(0) > ProjectConstants.CoalWarningPrio)
+                        mine.CoalWarning = true;
+                    if (reader.GetInt16(0) > ProjectConstants.CoalAlarmPrio)
+                        mine.CoalAlarm = true;
+                }
+                reader.Close();
             }
         }
     }

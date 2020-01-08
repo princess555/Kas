@@ -12,6 +12,7 @@ namespace CTS_Analytics.Models
         public DateTime ToDate { get; set; }
 
         public IEnumerable<SelectListItem> Locations { get; set; }
+
         public IEnumerable<SelectListItem> BeltScales { get; set; }
         public IEnumerable<SelectListItem> Skips { get; set; }
         public IEnumerable<SelectListItem> FileFormats { get; set; }

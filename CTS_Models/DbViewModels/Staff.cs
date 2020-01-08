@@ -12,5 +12,6 @@ namespace CTS_Models.DbViewModels
         public string LocationID { get; set; }
         [Key]
         public string CNT { get; set; }
+
     }
 }

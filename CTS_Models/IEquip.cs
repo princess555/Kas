@@ -12,6 +12,7 @@ namespace CTS_Models
 		string NameEng { get; set; }
 		string Name { get; set; }
 		string LocationID { get; set; }
+
 		string NameKZ { get; set; }
 	}
 }

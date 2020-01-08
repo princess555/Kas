@@ -12,5 +12,6 @@ namespace CTS_Models.Role
         [Key]
         public int ID { get; set; }
         public string NameRoles { get; set; }
+
     }
 }

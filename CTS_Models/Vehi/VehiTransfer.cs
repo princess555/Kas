@@ -9,5 +9,6 @@ namespace CTS_Models
 		[ForeignKey("Equip")]
 		public int? EquipID { get; set; }
 		public virtual VehiScale Equip { get; set; }
+
 	}
 }

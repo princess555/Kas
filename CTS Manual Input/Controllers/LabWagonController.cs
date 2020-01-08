@@ -17,6 +17,7 @@ namespace CTS_Manual_Input.Controllers
 	[CtsAuthorize(Roles = Roles.LabUserRoleName)]
 	public class LabWagonController : Controller
 	{
+
 		private CtsDbContext _cdb;
 		public LabWagonController()
 		{

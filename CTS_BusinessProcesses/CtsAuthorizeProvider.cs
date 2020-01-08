@@ -16,6 +16,7 @@ namespace CTS_Core
             var userLogin = user.Name.Split(new char[] { '\\' }).Last();
             var domain = user.Name.Split(new char[] { '\\' }).First();
 
+
             if (!(Cacher.Instance.TryRead(domain + userLogin + "Roles") is CtsUser ctsUser))
             {
                 ctsUser = cdb.CtsUser.Where(x => x.Login == userLogin).FirstOrDefault(x => x.Domain == domain);

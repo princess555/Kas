@@ -14,5 +14,6 @@ namespace CTS_Manual_Input.Models.SkipModels
 		public PagedList.IPagedList<SkipTransfer> SkipTransfers { get; set; }
 		public bool CanEdit { get; set; }
 		public bool CanDelete { get; set; }
+
 	}
 }

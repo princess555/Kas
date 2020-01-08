@@ -5,8 +5,9 @@ using System.Web;
 
 namespace CTS_Analytics.Models
 {
-  public class SearchModel
-  {
-    public string target { get; set; }
-  }
+    public class SearchModel
+    {
+        public string target { get; set; }
+
+    }
 }

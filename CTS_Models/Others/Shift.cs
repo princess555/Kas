@@ -12,5 +12,6 @@ namespace CTS_Models
 		public string LocationID { get; set; }
 		public virtual Location Location { get; set; }
 		public TimeSpan TimeStart { get; set; }
+
 	}
 }

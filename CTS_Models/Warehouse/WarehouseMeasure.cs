@@ -10,6 +10,7 @@ namespace CTS_Models
 		public int? WarehouseID { get; set; }
 		public virtual Warehouse Warehouse { get; set; }
 		public double? TotalMeasured { get; set; }
+
 		public double? TotalCalculated { get; set; }
 		public DateTime MeasureDate { get; set; }
 		public DateTime LasEditDateTime { get; set; }

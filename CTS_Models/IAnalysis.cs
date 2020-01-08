@@ -11,6 +11,8 @@ namespace CTS_Models
 		int ID { get; set; }
 		string AnalysisID { get; set; }
 		DateTime AnalysisTimeStamp { get; set; }
+
+
 		DateTime LasEditDateTime { get; set; }
 		string Comment { get; set; }
 		string OperatorName { get; set; }

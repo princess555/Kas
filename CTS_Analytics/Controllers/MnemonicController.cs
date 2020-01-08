@@ -35,14 +35,14 @@ namespace CTS_Analytics.Controllers
             {
                 if (_builder == null)
                     _builder = new MnemonicModelBuilder(getUserLang(Request.Cookies["lang"]), GetDateFromCookie("fromdate"), GetDateFromCookie("todate"));
-               
+
                 return _builder;
             }
         }
 
         public MnemonicController()
         {
-          
+
             this._cdbService = new CentralDBService();
             this._wagDbService = new WagonDbService();
         }
@@ -314,7 +314,7 @@ namespace CTS_Analytics.Controllers
 
                 return View(sumCounter.ToList());
             }
-            
+
         }
 
         public ActionResult Mine_vagon(string ID, int wagonScaleID, int? page, bool filterManualInput = false, bool orderByTransferTimeStampAsc = false, string wagonNumberFilter = "")

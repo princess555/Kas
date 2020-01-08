@@ -17,6 +17,7 @@ namespace CTS_Manual_Input.Controllers
 	[CtsAuthorize(Roles = Roles.WarehouseUserRoleName)]
 	public class WarehouseController : Controller
 	{
+
 		private CtsDbContext _cdb = new CtsDbContext();
 
 		public ActionResult Index(int page = 1)

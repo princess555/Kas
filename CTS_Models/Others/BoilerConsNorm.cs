@@ -9,5 +9,6 @@ namespace CTS_Models
 		public string ID { get; set; }
 		public virtual Location Location { get; set; }
 		public float ConsNorm { get; set; }
+
 	}
 }

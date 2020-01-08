@@ -9,6 +9,7 @@ namespace CTS_Analytics
         {
             filters.Add(new ErrorHandler.AiHandleErrorAttribute());
             filters.Add(new ProfilingActionFilter());
+
         }
     }
 }

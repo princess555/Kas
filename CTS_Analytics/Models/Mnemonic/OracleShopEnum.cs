@@ -16,5 +16,6 @@ namespace CTS_Analytics.Models.Mnemonic
         kaz = 7011,
         shah = 7014,
         tent = 7015
+
     }
 }

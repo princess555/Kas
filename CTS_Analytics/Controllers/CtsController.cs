@@ -41,6 +41,7 @@ namespace CTS_Analytics.Controllers
                 lang = "ru";
 
             return lang;
+
         }
     }
 }

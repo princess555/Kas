@@ -29,6 +29,7 @@ namespace CTS_Manual_Input.Controllers
 			var transfers = _cdb.VehiTransfers.Where(t => vehiScalesArray.Contains((int)t.EquipID))
 				.Where(d => d.TransferTimeStamp >= DbFunctions.AddDays(System.DateTime.Now, -2));
 
+
 			@ViewBag.Title = "Данные автомобильных весов";
 
 			return View(new VehiScales_Transfers

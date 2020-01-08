@@ -47,6 +47,7 @@ namespace CTS_Manual_Input.Controllers
 
 			return View(new SkipsAndTransfersModel
 			{
+
 				Skips = skips,
 				SkipTransfers = transfers.OrderByDescending(t => t.TransferTimeStamp).ToPagedList(page, pagesize),
 				Counters = new Dictionary<string, string>(),
