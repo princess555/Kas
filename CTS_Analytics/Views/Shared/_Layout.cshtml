@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>@ViewBag.PageName</title>
+    <link href="~/Content/Mnemo/style/pt-sans.css" rel="stylesheet">
+    <!-- Bootstrap-->
+    <link href="~/Content/Mnemo/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/Mnemo/style/fonts.css" rel="stylesheet">
+    <link href="~/Content/Mnemo/style/style.css" rel="stylesheet">
+    <link href="~/Content/Mnemo/style/responsive.css" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/Mnemo/style/jquery.fancybox.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/Mnemo/tooltipster/dist/css/tooltipster.bundle.min.css" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script defer src="~/Content/Mnemo/js/bootstrap.Mnemo.min.js"></script>
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script defer src="~/Scripts/bootstrap-multiselect.js"></script>
+    <link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+    <script type='text/javascript'>
+        var appInsights = window.appInsights || function (config) {
+            function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } }
+            var t = { config: config }, u = document, e = window, o = 'script', s = u.createElement(o), i, f; for (s.src = config.url
+                || '//az416426.vo.msecnd.net/scripts/a/ai.0.js', u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [],
+                i = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Ajax']; i.length;)r('track' + i.pop()); return r('setAuthenticatedUserContext'),
+                    r('clearAuthenticatedUserContext'), config.disableExceptionTracking || (i = 'onerror', r('_' + i), f = e[i], e[i] = function (config, r, u, e, o)
+                    { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o), s }), t
+        }({
+            instrumentationKey: 'c7d1f5e1-b91f-4421-956c-28b9d8f193a4'
+        });
+
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+<body>
+    <div class="header">
+
+        <a href='@Url.Action("Index", "Mnemonic")' class="logo">Логотип</a>
+        <div class="user">
+            <a href='@Url.Action("Map", "Mnemonic")'>
+                @Resources.ResourceGeneral.HeaderUserCaption
+                <span>@User.Identity.Name</span>
+            </a>
+        </div>
+        <div class="calendar" id="dashboardrange" style="cursor: pointer; width: 20%">
+        </div>
+
+        <div class="name">
+            <p>@Resources.ResourceGeneral.HeadeaAppCaption</p>
+            <p class="subname"><span>@ViewBag.PageName</span></p>
+        </div>
+    </div>
+
+    <div class="container-fluid wrapper">
+        <div class="sidebar">
+            <div class="lang">
+                @Html.ActionLink("Рус", "ChangeCulture", new { lang = "ru" }, new { @id = "ru" })
+                @Html.ActionLink("Eng", "ChangeCulture", new { lang = "en" }, new { @id = "en" })
+                @Html.ActionLink("Қаз", "ChangeCulture", new { lang = "kk" }, new { @id = "kk" })
+            </div>
+            <div class="menu">
+                <ul class="leftmenu reset">
+                    <li id="MenuItemMnemonic">
+                        <a title="@Resources.ResourceGeneral.HeaderTabMnemo" onclick='OnHomeClick()'><i class="icon icon_1"></i><span>@Resources.ResourceGeneral.HeaderTabMnemo</span></a>
+                        <ul class="submenu lvl-1 reset">
+                            @Submenu("Mnemonic", true)
+                        </ul>
+                    </li>
+
+                    @*@if (CTS_Analytics.Helpers.ReportRoleHelper.UserHasAnyReportRole(User.Identity))
+                    {*@
+                        <li id="MenuItemReport">
+                            <a title="@Resources.ResourceGeneral.HeaderTabReports" href='@Url.Action("Index", "Static")'><i class="icon icon_2"></i><span>@Resources.ResourceGeneral.HeaderTabReports</span></a>
+                        </li>
+                    @*}*@
+
+                    @*@if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.AnalyticsDashboardRoleName))
+                    {*@
+                        <li id="MenuItemDashBoard">
+                            <a title="@Resources.ResourceGeneral.HeaderTabDashboard" href='@Url.Action("Index", "DashBoard")'><i class="icon icon_3"></i><span>@Resources.ResourceGeneral.HeaderTabDashboard</span></a>
+                            <ul class="submenu lvl-1 reset">
+                                @Submenu("DashBoard", false)
+                            </ul>
+                        </li>
+                    @*}*@
+                    <li id="MenuItemMap">
+                        <a title="@Resources.ResourceGeneral.HeaderTabMap" href='@Url.Action("Map", "Mnemonic")'><i class="icon icon_4"></i><span>@Resources.ResourceGeneral.HeaderTabMap</span></a>
+                    </li>
+                    <li id="MenuItemDoc">
+                        <a title="@Resources.ResourceMnemonic.Thesaurus" href='@Url.Action("doc", "Mnemonic")'><i class="icon icon_5"></i><span>@Resources.ResourceMnemonic.Thesaurus</span></a>
+                    </li>
+                    @*@if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.AnalyticsDashboardRoleName))
+                    {*@
+                        <li id="MenuItemAlarm">
+                            <a title="@Resources.ResourceMnemonic.Incidents" href='@Url.Action("Alarm", "DashBoard")'><i class="icon icon_6"></i><span>@Resources.ResourceMnemonic.Incidents</span></a>
+                        </li>
+                    //}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="content">
+        @RenderBody()
+        @Resources.ResourceGeneral.Culture
+    </div>
+ 
+    @helper Submenu(string controller, bool showCofAndStations)
+    {
+      //  if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.MineShahRoleName))
+       // {
+            <li><a href='@Url.Action("shah", controller)'>@Resources.ResourceMnemonic.ShahMineName</a></li>
+      //  }
+      //  if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.MineTentRoleName))
+      //  {
+            <li><a href='@Url.Action("tent", controller)'>@Resources.ResourceMnemonic.TentMineName</a></li>
+        @*}
+        if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.MineLenRoleName))
+        {*@
+            <li><a href='@Url.Action("len", controller)'>@Resources.ResourceMnemonic.LenMineName</a></li>
+        @*}
+        if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.MineKazRoleName))
+        {*@
+            <li><a href='@Url.Action("kaz", controller)'> @Resources.ResourceMnemonic.KazMineName </a></li>
+        @*}
+        if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.MineAbayRoleName))
+        {*@
+            <li><a href='@Url.Action("abay", controller)'>@Resources.ResourceMnemonic.AbayMineName</a></li>
+        @*}
+        if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.MineKostRoleName))
+        {*@
+            <li><a href='@Url.Action("kost", controller)'>@Resources.ResourceMnemonic.KostMineName</a></li>
+        @*}
+        if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.MineKuzRoleName))
+        {*@
+            <li><a href='@Url.Action("kuz", controller)'>@Resources.ResourceMnemonic.KuzMineName</a></li>
+        @*}
+        if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.MineSar1RoleName))
+        {*@
+            <li><a href='@Url.Action("sar1", controller)'>@Resources.ResourceMnemonic.Sar1MineName</a></li>
+        @*}
+        if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.MineSar3RoleName))
+        {*@
+            <li><a href='@Url.Action("sar3", controller)'>@Resources.ResourceMnemonic.Sar3MineName</a></li>
+//}
+if (showCofAndStations)
+{
+    //if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.CofvRoleName))
+    //{
+                <li><a href='@Url.Action("cofv", controller)'>@Resources.ResourceMnemonic.CofName</a></li>
+    //}
+    //if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.StAbayRoleName))
+    //{
+                <li><a href='@Url.Action("sabay", controller)'>@Resources.ResourceMnemonic.StAbayName</a></li>
+    //}
+    //if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.StDubovRoleName))
+    //{
+                <li><a href='@Url.Action("sugl", controller)'>@Resources.ResourceMnemonic.StUglerudName</a></li>
+    //}
+    //if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.StDubovRoleName))
+    //{
+                <li><a href='@Url.Action("sdub", controller)'>@Resources.ResourceMnemonic.StDubovName</a></li>
+    //}
+    //if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.StRaspRoleName))
+    //{
+                <li><a href='@Url.Action("srasp", controller)'>@Resources.ResourceMnemonic.StRasporName</a></li>
+          //  }
+        }
+    }
+
+    @Scripts.Render("~/bundles/analscripts")
+    @RenderSection("scripts", required: false)
+    @using StackExchange.Profiling
+    <script>
+            $(function () {
+            $('#locations').multiselect({
+            includeSelectAllOption: true,
+            selectAllText: '@Resources.ResourceFilters.allSelected' ,
+            nonSelectedText: '@Resources.ResourceFilters.NonSelected' ,
+            allSelectedText: '@Resources.ResourceFilters.allSelected' ,
+            nSelectedText: '@Resources.ResourceFilters.Selected'
+                });
+            });
+    </script>
+    <script>
+            $(function () {
+                $('#@Resources.ResourceGeneral.CurrentLang').addClass('active');
+
+            var url = window.location.href;
+            if (url.includes('DashBoard'))
+            {
+                if (url.includes('Alarm')) {
+                    $('#MenuItemAlarm').addClass('active');
+                }
+                else {
+                    $('#MenuItemDashBoard').addClass('active');
+                }
+            }
+            else if (url.includes('Static') || url.includes('Dynamic')) {
+                $('#MenuItemReport').addClass('active');
+                $('#dashboardrange').css('display', 'none');
+                }
+            else {
+                    if (url.includes('Map')) {
+                        $('#MenuItemMap').addClass('active');
+                    }
+                    else if (url.includes('doc')) {
+                        $('#MenuItemDoc').addClass('active');
+                        if (!url.includes('wagon_search'))
+                        $('#dashboardrange').css('display', 'none');
+
+                    }
+                    else
+                        $('#MenuItemMnemonic').addClass('active');
+                }
+        });
+            function OnHomeClick() {
+                 window.location.href = '@Url.Action("Index", "Mnemonic")';
+        }
+
+        function updateDates(start, end) {
+            $('#dashboardrange').html('<a>@Resources.ResourceGeneral.Date<span>' + start.format('DD.MM.YYYY') + ' - ' + end.format('DD.MM.YYYY') + '</span></a>');
+            $('iframe').each(function () {
+                var fromdate = new Date(+getUrlParameter('from', $(this).attr('src')));
+                var todate = new Date(+getUrlParameter('to', $(this).attr('src')));
+                var newfromdate = start;
+                var newtodate = end;
+                setNewdateToIframes(this, +todate, +newtodate, +fromdate, +newfromdate);
+            });
+        }
+
+        $('document').ready(function () {
+            var start = moment($.cookie('fromdate'));
+            var end = moment($.cookie('todate'));
+
+            $('#dashboardrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                timePicker: true,
+                timePicker24Hour: true,
+                showDropdowns: true,
+                locale: {
+                    format: 'DD.MM.YYYY HH:mm',
+                    applyLabel: '@Resources.ResourceGeneral.DateRangePickerApplyLabel',
+                    cancelLabel: '@Resources.ResourceGeneral.DateRangePickerCancelLabel',
+                    fromLabel: '@Resources.ResourceGeneral.DateRangePickerFromLabel',
+                    toLabel: '@Resources.ResourceGeneral.DateRangePickerToLabel',
+                    customRangeLabel: '@Resources.ResourceGeneral.DateRangePickerCustomRangeLabel',
+                    "daysOfWeek": [
+                        "@Resources.ResourceGeneral.DateRangePickerSu",
+                        "@Resources.ResourceGeneral.DateRangePickerMo",
+                        "@Resources.ResourceGeneral.DateRangePickerTu",
+                        "@Resources.ResourceGeneral.DateRangePickerWe",
+                        "@Resources.ResourceGeneral.DateRangePickerTh",
+                        "@Resources.ResourceGeneral.DateRangePickerFr",
+                        "@Resources.ResourceGeneral.DateRangePickerSa"
+                    ],
+                    "firstDay": 1,
+                    monthNames: [
+                        '@Resources.ResourceGeneral.DateRangePickerJan',
+                        '@Resources.ResourceGeneral.DateRangePickerFeb',
+                        '@Resources.ResourceGeneral.DateRangePickerMar',
+                        '@Resources.ResourceGeneral.DateRangePickerApr',
+                        '@Resources.ResourceGeneral.DateRangePickerMay',
+                        '@Resources.ResourceGeneral.DateRangePickerJun',
+                        '@Resources.ResourceGeneral.DateRangePickerJul',
+                        '@Resources.ResourceGeneral.DateRangePickerAug',
+                        '@Resources.ResourceGeneral.DateRangePickerSep',
+                        '@Resources.ResourceGeneral.DateRangePickerOct',
+                        '@Resources.ResourceGeneral.DateRangePickerNov',
+                        '@Resources.ResourceGeneral.DateRangePickerDec'
+                    ]
+                },
+                ranges: {
+                    '@Resources.ResourceGeneral.Today': [moment().startOf('day'), moment().endOf('day')],
+                    '@Resources.ResourceGeneral.Yesterday': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+                    '@Resources.ResourceGeneral.ThisWeek': [moment().startOf('week'), moment().endOf('week')],
+                    '@Resources.ResourceGeneral.ThisMonth': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resources.ResourceGeneral.PrevMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                    '@Resources.ResourceGeneral.ThisQuater': [moment().startOf('quarter'), moment().endOf('quarter')],
+                    '@Resources.ResourceGeneral.ThisYear': [moment().startOf('year'), moment().endOf('year')]
+                }
+            }, updateDates);
+            updateDates(start, end);
+        });
+    </script>
+    <script defer type="text/javascript" src="~/Content/Mnemo/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <script>
+        jQuery(function () {
+            jQuery('[title]').tooltipster({
+                side: ["right", "top"]
+            });
+
+        });
+    </script>
+</body>
+</html>

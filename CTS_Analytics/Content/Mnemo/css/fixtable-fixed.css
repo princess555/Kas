@@ -1,0 +1,7 @@
+﻿/*Фиксация шабки таблицы*/
+.fixed {
+    position: fixed;
+    width: 100%;
+    background-color: #ffffff;
+    background-size:100px 100px;
+}

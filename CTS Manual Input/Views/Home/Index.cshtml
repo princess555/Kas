@@ -1,0 +1,55 @@
+﻿@model  CTS_Manual_Input.Models.HomePageModel
+@{
+    Layout = "~/Views/Shared/_PreLayout.cshtml";
+    ViewBag.Title = "Начальная страница";
+}
+@{string greetingphrase = "Вы авторизованы для";
+	if (CTS_Core.CtsAuthorizeProvider.CanAddUser(User.Identity)) { greetingphrase += " ввода"; }
+	if (Model.CanEdit == true) { greetingphrase += " и редактирования"; }
+	if (Model.CanDelete == true) { greetingphrase += ", а также удаления"; }
+	if (CTS_Core.CtsAuthorizeProvider.CanApproveUser(User.Identity)) { greetingphrase += " и подтверждения"; }
+
+	{ greetingphrase += " данных"; }
+
+	if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.WagonUserRoleName)) { greetingphrase += " вагонных весов,"; }
+	if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.BeltUserRoleName)) { greetingphrase += " конвейерных весов,"; }
+	if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.SkipUserRoleName)) { greetingphrase += " скиповых подъемов,"; }
+	if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.VehiUserRoleName)) { greetingphrase += " автомобильных весов,"; }
+	if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.RockUserRoleName)) { greetingphrase += " утилизации породы,"; }
+	if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.LabUserRoleName)) { greetingphrase += " лаборатории,"; }
+	if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.WarehouseUserRoleName) ||
+		CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.WarehouseSetUserRoleName)) { greetingphrase += " складов,"; }
+	if (CTS_Core.CtsAuthorizeProvider.CheckIsInRole(User.Identity, CTS_Core.Roles.DictUserRoleName)) { greetingphrase += " словарей"; }
+
+	greetingphrase += " на следующих объектах";
+}
+<div class="subhead">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center subname">
+                    <div class="name">coal tracking</div>
+                    <span>Приложение для ручного ввода</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content">
+                <p class="intro">@greetingphrase</p>
+                <div class="row mines">
+                    @foreach (var location in Model.Locations)
+                    {
+                        <div class="col-md-6">
+                            <a href="#"><i></i>@location.LocationName</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

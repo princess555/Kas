@@ -1,0 +1,67 @@
+﻿@using System.Linq;
+@model CTS_Analytics.Models.Mnemonic.Mine_vagon
+
+@{
+    var handClass = Model.HasManualValues ? "hand-type" : "";
+    var lastTime = Model.Time != null ? Model.Time.ToString("HH:mm") : "";
+    var mainClass = ViewData["mainClass"] ?? "block browntitle block_w7";
+}
+
+<div class="@mainClass @handClass" id="@Model.DivID" style="left:1094px; top:37px">
+    <div class="title">
+        <i class="icon icon_vagon"></i>
+        @if (Model.HasManualValues)
+        {
+            <a href class="hand tooltipstered">@Resources.ResourceMnemonic.ManualInputToolTip</a>
+        }
+    </div>
+    <div class="text">
+        <div class="line">
+            <span class="name">Кол-во вагонов за период</span>
+            <div class="count">@Model.Count.ToString("N0", System.Globalization.CultureInfo.CurrentCulture)</div>
+            <span class="caption">@Resources.ResourceMnemonic.Pieces</span>
+            <div class="clearfix"></div>
+        </div>
+        <div class="line">
+            <span class="name">Загруж. посл. вагон</span>
+            <div class="newLine">@lastTime</div>
+            <span class="caption">@Resources.ResourceMnemonic.HHmm</span>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="table text">
+        <div class="line-head" style="margin-top: 20px;">
+            @Resources.ResourceMnemonic.WagonLoadingJourlal
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="padding-left:15px">@Resources.ResourceMnemonic.Time</th>
+                    <th>Кол-во </th>
+                </tr>
+            </thead>
+
+            @if (Model.Count != 0)
+            {
+               
+                foreach (var transfer in Model.RailWeigh.Take(5).ToList())
+                {
+                    
+                        <tr class="odd">
+                            <td>@transfer.Times.ToString()</td>
+                            <td>@transfer.CountVagons</td>
+                        </tr>
+                    
+                }
+            }
+
+        </table>
+    </div>
+    <div class="text">
+        <div class="result">
+            <div class="res"><span>@Resources.ResourceMnemonic.CoalWarning</span><a href='@Url.Action("Alarm", "DashBoard")'> <i class="green"></i></a></div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

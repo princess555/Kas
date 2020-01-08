@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SelectListItem>
+<div class="form-group">
+    <label class="control-label col-md-2" for="ReportPeriod">@Resources.ResourceFilters.Location</label>
+    <select id="Mines" multiple="multiple" name="SelectedMines" class="multiselect">
+        @if (Model != null)
+        {
+            foreach (var item in Model.Where(l => CTS_Analytics.Helpers.ReportRoleHelper.UserHasLocationRole(User.Identity, l.Value)))
+            {
+                if (item.Text != null)
+                {
+                    <option value="@item.Value">
+                        @item.Text
+                    </option>
+                }
+            }
+        }
+    </select>
+</div>
+
+<script type="text/javascript">
+
+        $(function () {
+            $('#Mines').multiselect({
+                includeSelectAllOption: true,
+                selectAllText: '@Resources.ResourceFilters.allSelected',
+                nonSelectedText: '@Resources.ResourceFilters.NonSelected',
+                allSelectedText: '@Resources.ResourceFilters.allSelected',
+                nSelectedText: '@Resources.ResourceFilters.Selected'
+            });
+            if (getUrlParameter('locations', window.location.href)) {
+                $('#Mines').multiselect('select', getUrlParameter('locations', window.location.href).split(','))
+            }
+            else {
+                $('#Mines').multiselect('selectAll', false);
+            }
+            
+            $('#Mines').multiselect('updateButtonText');
+    });
+
+$(function () {
+    $('#Mines').change(function () {
+        $('#WagonScalesContainer').load
+            ('@Url.Action("GetWagonScales", "Filter")?Locations=' + $("#Mines").val());
+            $('#BeltScalesContainer').load
+                ('@Url.Action("GetBeltScales", "Filter")?Locations=' + $("#Mines").val());
+            $('#SkipContainer').load
+                ('@Url.Action("GetSkips", "Filter")?Locations=' + $("#Mines").val());
+            });
+    });
+</script>
+

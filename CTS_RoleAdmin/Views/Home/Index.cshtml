@@ -1,0 +1,44 @@
+﻿@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Subhead {
+	<div class="subhead">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="text-center subname">
+						<div class="name">coal tracking</div>
+						<span>Приложение управления доступом</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+<br />
+<div class="row">
+	<div class="col-md-12">
+        <div class="content">
+            <div class="row mines">
+                <div class="col-md-6">
+                    <a href='@Url.Action("MiRoleList")'><i></i>Управление ролями ручного ввода</a>
+                </div>
+                <div class="col-md-6">
+                    <a href='@Url.Action("LocationsRoleList")'><i></i>Управление ролями местонахождений</a>
+                </div>
+                <div class="col-md-6">
+                    <a href='@Url.Action("AnalyticRoleList")'><i></i>Управление ролями аналитики</a>
+                </div>
+                <div class="col-md-6">
+                    <a href='@Url.Action("RepoertsRoleList")'><i></i>Управления ролями отчетов</a>
+                </div>
+                <div class="col-md-6">
+                    <a href='@Url.Action("RoleAdminRoleList")'><i></i>Управление администрацией ролей</a>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+

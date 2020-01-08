@@ -1,0 +1,48 @@
+﻿@model CTS_Analytics.Models.Mnemonic.cofvModel
+
+<div class="main">
+    <div id="tsof2_bg">
+
+        @{
+            Model.VagonNorth.DivID = "tsof2-tsof-1";
+        }
+        @Html.Partial("Partials/_WagonScales4MineMnemonic", Model.VagonNorth, new ViewDataDictionary { { "mainClass", "block browntitle block_w7" } })
+
+        @{
+            Model.VagonSouth1.DivID = "tsof2-tsof-2";
+        }
+        @Html.Partial("Partials/_WagonScales4MineMnemonic", Model.VagonSouth1, new ViewDataDictionary { { "mainClass", "block browntitle block_w7" } })
+
+        @{
+            Model.VagonSouth2.DivID = "tsof2-tsof-3";
+        }
+        @Html.Partial("Partials/_WagonScales4MineMnemonic", Model.VagonSouth2, new ViewDataDictionary { { "mainClass", "block browntitle block_w7" } })
+
+        @{
+            Model.Vagon.DivID = "tsof2-tsof-4";
+        }
+        @Html.Partial("Partials/_WagonScales4MineVagon", Model.VagonCountCofv, new ViewDataDictionary { { "mainClass", "block browntitle block_w7" } })
+
+        @{
+            Model.Belt.DivID = "konv-tsof2-1";
+        }
+        @Html.Partial("Partials/_BeltScales4MineMnemonic", Model.Belt)
+
+        @{
+            Model.Kotel.DivID = "kotel-tsof2-1";
+        }
+        @Html.Partial("Partials/_Kotel4MineMnemonic", Model.Kotel)
+
+        @{
+            Model.VehiScales.DivID = "tsof2-stone1";
+        }
+        @Html.Partial("Partials/_RockUtil", Model.VehiScales)
+
+        <div class="buttons buttons-horz horz-arrow" id="btn_tsof2_kot-1">
+            <a href="#" title="Весы" class="libra green">Весы</a>
+            <a href="#" title="Направление" class="arrow-down green">Стрелка</a>
+        </div>
+
+        @Html.ActionLink(@Resources.ResourceMnemonic.MoreInfo, "cofv_more", "Mnemonic", null, new { @class = "btn-more", id = "tsof2-btn-more" })
+    </div>
+</div>
